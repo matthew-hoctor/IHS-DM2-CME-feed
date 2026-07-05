@@ -1,0 +1,8 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IHS Diabetes Calendar//github.com//
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Calendar of IHS Diabetes training webinars
+X-WR-CALNAME:IHS Advancements in Diabetes Training
+END:VCALENDAR
