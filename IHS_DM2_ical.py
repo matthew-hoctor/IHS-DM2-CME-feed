@@ -14,7 +14,7 @@ from icalendar import Calendar, Event
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS-DM2-CME-feed/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS-Calendar-Scraper/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
 # Standard VTIMEZONE definition for Eastern Time
 VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
@@ -93,7 +93,7 @@ def find_calendar_links(html_content, base_url):
     return unique_links
 
 def clean_description(description):
-    """Remove HTML tags and clean up the description text."""
+    """Extract just the essential info from the description."""
     if not description:
         return ""
     
@@ -106,6 +106,23 @@ def clean_description(description):
     # Clean up whitespace
     clean = re.sub(r'\s+', ' ', clean)
     clean = clean.strip()
+    
+    # Try to extract just the webinar access info
+    # Look for JOIN WEBEX WEBINAR and what follows
+    join_match = re.search(r'(JOIN WEBEX WEBINAR.*?)(?=IMPORTANT NOTICE|$)', clean, re.DOTALL)
+    if join_match:
+        clean = join_match.group(1).strip()
+    else:
+        # If we can't find the access info, truncate to reasonable length
+        if len(clean) > 500:
+            clean = clean[:497] + '...'
+    
+    # Remove any remaining HTML entities
+    clean = clean.replace('&chr(39);', "'")
+    clean = clean.replace('&nbsp;', ' ')
+    clean = clean.replace('&amp;', '&')
+    clean = clean.replace('&lt;', '<')
+    clean = clean.replace('&gt;', '>')
     
     return clean
 
@@ -147,11 +164,11 @@ def fetch_and_clean_ics(url):
         
         for component in cal.walk():
             if component.name == "VEVENT":
-                # Remove HTML version
+                # Remove HTML version entirely - this crashes some calendar apps
                 if 'X-ALT-DESC' in component:
                     del component['X-ALT-DESC']
                 
-                # Clean up description
+                # Clean up description - shorten to essential info
                 if 'DESCRIPTION' in component:
                     component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
                 
@@ -167,9 +184,13 @@ def fetch_and_clean_ics(url):
                     start_str = event_date.strftime('%Y%m%d') + 'T150000'
                     end_str = event_date.strftime('%Y%m%d') + 'T160000'
                     
-                    # Assign the formatted strings directly
+                    # Assign the formatted strings
                     component['DTSTART'] = start_str
                     component['DTEND'] = end_str
+                    
+                    # Add TZID parameter
+                    component['DTSTART'].params['TZID'] = ['Eastern Time']
+                    component['DTEND'].params['TZID'] = ['Eastern Time']
                     
                     print(f"  Standardized to 3:00 PM Eastern (1 hour duration)")
                     print(f"  DTSTART: {start_str}, DTEND: {end_str}")
