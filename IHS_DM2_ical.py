@@ -9,12 +9,12 @@ import re
 import time
 from datetime import datetime, time as dt_time
 from bs4 import BeautifulSoup
-from icalendar import Calendar, Event
+from icalendar import Calendar, Event, vDatetime
 
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS-Calendar-Scraper/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS-Calendar-Scraper/1.0 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
 # Standard VTIMEZONE definition for Eastern Time
 VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
@@ -180,20 +180,24 @@ def fetch_and_clean_ics(url):
                     # Get the date from the existing start time
                     event_date = dtstart.dt.date()
                     
-                    # Format the date as YYYYMMDDTHHMMSS
-                    start_str = event_date.strftime('%Y%m%d') + 'T150000'
-                    end_str = event_date.strftime('%Y%m%d') + 'T160000'
+                    # Create datetime objects for the new times
+                    new_start = datetime.combine(event_date, dt_time(15, 0, 0))
+                    new_end = datetime.combine(event_date, dt_time(16, 0, 0))
                     
-                    # Assign the formatted strings
-                    component['DTSTART'] = start_str
-                    component['DTEND'] = end_str
+                    # Create vDatetime objects
+                    vstart = vDatetime(new_start)
+                    vend = vDatetime(new_end)
                     
-                    # Add TZID parameter
-                    component['DTSTART'].params['TZID'] = ['Eastern Time']
-                    component['DTEND'].params['TZID'] = ['Eastern Time']
+                    # Add TZID parameter to the vDatetime objects
+                    vstart.params['TZID'] = ['Eastern Time']
+                    vend.params['TZID'] = ['Eastern Time']
+                    
+                    # Assign the vDatetime objects with parameters
+                    component['DTSTART'] = vstart
+                    component['DTEND'] = vend
                     
                     print(f"  Standardized to 3:00 PM Eastern (1 hour duration)")
-                    print(f"  DTSTART: {start_str}, DTEND: {end_str}")
+                    print(f"  DTSTART: {vstart}, DTEND: {vend}")
                 
                 print(f"  Cleaned event: {component.get('SUMMARY', 'Untitled')}")
         
