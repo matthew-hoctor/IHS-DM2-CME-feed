@@ -171,7 +171,6 @@ def fetch_and_clean_ics(url):
                     # Preserve the timezone information
                     if hasattr(dtstart, 'dt') and hasattr(dtstart.dt, 'tzinfo'):
                         # If the original had timezone info, use it
-                        # We need to localize the datetime
                         try:
                             import pytz
                             eastern = pytz.timezone('America/New_York')
@@ -181,6 +180,8 @@ def fetch_and_clean_ics(url):
                             # Fallback: just use the datetime without timezone
                             pass
                     
+                    # Replace with proper iCalendar format
+                    # We need to use the component's set_dt method or assign with proper formatting
                     component['DTSTART'] = new_start
                     component['DTEND'] = new_end
                     
