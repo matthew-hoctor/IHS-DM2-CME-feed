@@ -102,35 +102,22 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        # Get the raw content and detect encoding
+        # Get the raw content as text
         raw_content = response.content
         
-        # Try to decode as UTF-8 with BOM removal
-        try:
-            # First try: UTF-8 with BOM removal
-            if raw_content.startswith(b'\xef\xbb\xbf'):
-                text_content = raw_content[3:].decode('utf-8')
-                print("  Stripped UTF-8 BOM")
-            else:
-                # Try to detect encoding
-                import chardet
-                detected = chardet.detect(raw_content)
-                encoding = detected.get('encoding', 'utf-8')
-                text_content = raw_content.decode(encoding, errors='ignore')
-        except:
-            # Fallback: decode with UTF-8, ignoring errors
+        # Try to decode with UTF-8, removing any BOM
+        if raw_content.startswith(b'\xef\xbb\xbf'):
+            text_content = raw_content[3:].decode('utf-8')
+        else:
             text_content = raw_content.decode('utf-8', errors='ignore')
         
-        # Remove any remaining BOM characters from the text
+        # Remove any stray BOM characters
         text_content = text_content.replace('\ufeff', '')
         
-        # Also handle the case where BOM is in the line itself
-        lines = text_content.split('\n')
-        cleaned_lines = []
-        for line in lines:
-            # Remove BOM from individual lines if present
-            cleaned_lines.append(line.replace('\ufeff', ''))
-        text_content = '\n'.join(cleaned_lines)
+        # Normalize line endings: convert \n to \r\n
+        # But be careful not to double-convert \r\n
+        text_content = text_content.replace('\r\n', '\n')  # First, standardize to \n
+        text_content = text_content.replace('\n', '\r\n')  # Then convert to \r\n
         
         # Convert back to bytes for the parser
         cleaned_bytes = text_content.encode('utf-8')
