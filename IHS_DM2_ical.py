@@ -124,6 +124,9 @@ def clean_description(description):
     clean = clean.replace('&lt;', '<')
     clean = clean.replace('&gt;', '>')
     
+    # Ensure the description is not too long for a single line
+    # The iCalendar spec recommends folding lines longer than 75 characters
+    # But we'll keep it as a single line and let the library handle folding
     return clean
 
 def fetch_and_clean_ics(url):
@@ -197,7 +200,6 @@ def fetch_and_clean_ics(url):
                     component['DTEND'] = vend
                     
                     print(f"  Standardized to 3:00 PM Eastern (1 hour duration)")
-                    print(f"  DTSTART: {vstart}, DTEND: {vend}")
                 
                 print(f"  Cleaned event: {component.get('SUMMARY', 'Untitled')}")
         
@@ -266,10 +268,21 @@ def main():
     
     print(f"\nAdded {events_added} events to calendar")
     
+    # Write the file with CRLF line endings
     try:
-        with open(OUTPUT_FILE, 'wb') as f:
-            f.write(master_cal.to_ical())
-        print(f"\nCalendar written to {OUTPUT_FILE}")
+        # Generate the ICS content as bytes
+        ics_bytes = master_cal.to_ical()
+        
+        # Convert to text, replace LF with CRLF, then convert back to bytes
+        ics_text = ics_bytes.decode('utf-8')
+        ics_text = ics_text.replace('\r\n', '\n')  # Standardize to LF
+        ics_text = ics_text.replace('\n', '\r\n')  # Convert to CRLF
+        
+        # Write with CRLF line endings
+        with open(OUTPUT_FILE, 'w', encoding='utf-8', newline='\r\n') as f:
+            f.write(ics_text)
+        
+        print(f"\nCalendar written to {OUTPUT_FILE} with CRLF line endings")
     except Exception as e:
         print(f"ERROR writing file: {e}")
     
