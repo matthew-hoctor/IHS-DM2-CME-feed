@@ -14,7 +14,7 @@ from icalendar import Calendar, Event, vDatetime
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS-Calendar-Scraper/1.0 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS-Calendar-Scraper/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
 # Standard VTIMEZONE definition for Eastern Time
 VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
@@ -93,7 +93,7 @@ def find_calendar_links(html_content, base_url):
     return unique_links
 
 def clean_description(description):
-    """Extract just the essential info from the description."""
+    """Extract just the essential info and remove all newlines."""
     if not description:
         return ""
     
@@ -103,12 +103,11 @@ def clean_description(description):
     # Remove HTML tags
     clean = re.sub(r'<[^>]+>', '', str(description))
     
-    # Clean up whitespace
+    # Remove all newlines and extra whitespace
     clean = re.sub(r'\s+', ' ', clean)
     clean = clean.strip()
     
     # Try to extract just the webinar access info
-    # Look for JOIN WEBEX WEBINAR and what follows
     join_match = re.search(r'(JOIN WEBEX WEBINAR.*?)(?=IMPORTANT NOTICE|$)', clean, re.DOTALL)
     if join_match:
         clean = join_match.group(1).strip()
@@ -124,9 +123,10 @@ def clean_description(description):
     clean = clean.replace('&lt;', '<')
     clean = clean.replace('&gt;', '>')
     
-    # Ensure the description is not too long for a single line
-    # The iCalendar spec recommends folding lines longer than 75 characters
-    # But we'll keep it as a single line and let the library handle folding
+    # Remove any remaining newlines or carriage returns
+    clean = clean.replace('\n', ' ').replace('\r', ' ')
+    clean = re.sub(r'\s+', ' ', clean)
+    
     return clean
 
 def fetch_and_clean_ics(url):
@@ -171,7 +171,7 @@ def fetch_and_clean_ics(url):
                 if 'X-ALT-DESC' in component:
                     del component['X-ALT-DESC']
                 
-                # Clean up description - shorten to essential info
+                # Clean up description - shorten to essential info and remove newlines
                 if 'DESCRIPTION' in component:
                     component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
                 
@@ -273,10 +273,13 @@ def main():
         # Generate the ICS content as bytes
         ics_bytes = master_cal.to_ical()
         
-        # Convert to text, replace LF with CRLF, then convert back to bytes
+        # Convert to text, ensure CRLF line endings
         ics_text = ics_bytes.decode('utf-8')
-        ics_text = ics_text.replace('\r\n', '\n')  # Standardize to LF
-        ics_text = ics_text.replace('\n', '\r\n')  # Convert to CRLF
+        
+        # Remove any blank lines
+        lines = ics_text.splitlines()
+        non_empty_lines = [line for line in lines if line.strip()]
+        ics_text = '\r\n'.join(non_empty_lines)
         
         # Write with CRLF line endings
         with open(OUTPUT_FILE, 'w', encoding='utf-8', newline='\r\n') as f:
