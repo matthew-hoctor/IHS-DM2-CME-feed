@@ -7,14 +7,33 @@ Downloads and cleans .ics files from the IHS training page
 import requests
 import re
 import time
-from datetime import datetime
+from datetime import datetime, time as dt_time
 from bs4 import BeautifulSoup
 from icalendar import Calendar, Event
 
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS-DM2-CME-feed/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS_DM2_ical/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+
+# Standard VTIMEZONE definition for Eastern Time
+VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
+TZID:Eastern Time
+BEGIN:STANDARD
+DTSTART:20061101T020000
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=11
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:Standard Time
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20060301T020000
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=2SU;BYMONTH=3
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:Daylight Savings Time
+END:DAYLIGHT
+END:VTIMEZONE"""
 
 def fetch_page_with_retry(url, max_retries=3):
     """Fetch a page with retry logic."""
@@ -43,12 +62,10 @@ def find_calendar_links(html_content, base_url):
         
         # Look for calendar links with calID parameter
         if '/diabetes/calendar/?calID=' in href:
-            # Extract the calID value
             cal_id_match = re.search(r'calID=([A-F0-9]+)', href)
             if cal_id_match:
                 cal_id = cal_id_match.group(1)
                 
-                # Check if this is actually an ICS link (look for nearby text)
                 parent = link.parent
                 if parent:
                     parent_text = parent.get_text()
@@ -83,7 +100,10 @@ def clean_description(description):
     if isinstance(description, bytes):
         description = description.decode('utf-8', errors='ignore')
     
+    # Remove HTML tags
     clean = re.sub(r'<[^>]+>', '', str(description))
+    
+    # Clean up whitespace
     clean = re.sub(r'\s+', ' ', clean)
     clean = clean.strip()
     
@@ -107,35 +127,64 @@ def fetch_and_clean_ics(url):
         
         # Try to detect encoding from BOM
         if raw_content.startswith(b'\xff\xfe'):
-            # UTF-16 LE BOM
             text_content = raw_content[2:].decode('utf-16-le')
             print("  Detected UTF-16 LE encoding")
         elif raw_content.startswith(b'\xfe\xff'):
-            # UTF-16 BE BOM
             text_content = raw_content[2:].decode('utf-16-be')
             print("  Detected UTF-16 BE encoding")
         else:
-            # Try UTF-8, fallback to UTF-16
             try:
                 text_content = raw_content.decode('utf-8')
             except UnicodeDecodeError:
-                # Try UTF-16 as fallback
                 text_content = raw_content.decode('utf-16', errors='ignore')
                 print("  Detected UTF-16 encoding (no BOM)")
         
         # Remove any stray BOM characters
         text_content = text_content.replace('\ufeff', '')
         
-        # Now parse the ICS content
+        # Parse the ICS content
         cal = Calendar.from_ical(text_content.encode('utf-8'))
         
         for component in cal.walk():
             if component.name == "VEVENT":
+                # Remove HTML version
                 if 'X-ALT-DESC' in component:
                     del component['X-ALT-DESC']
                 
+                # Clean up description
                 if 'DESCRIPTION' in component:
                     component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
+                
+                # Fix the time: all events should be 3:00 PM Eastern (12:00 PM Pacific)
+                # and 1 hour duration
+                if 'DTSTART' in component and 'DTEND' in component:
+                    dtstart = component['DTSTART']
+                    dtend = component['DTEND']
+                    
+                    # Get the date from the existing start time
+                    event_date = dtstart.dt.date()
+                    
+                    # Set start time to 3:00 PM Eastern
+                    new_start = datetime.combine(event_date, dt_time(15, 0, 0))  # 3:00 PM
+                    new_end = datetime.combine(event_date, dt_time(16, 0, 0))    # 4:00 PM (1 hour later)
+                    
+                    # Preserve the timezone information
+                    if hasattr(dtstart, 'dt') and hasattr(dtstart.dt, 'tzinfo'):
+                        # If the original had timezone info, use it
+                        # We need to localize the datetime
+                        try:
+                            import pytz
+                            eastern = pytz.timezone('America/New_York')
+                            new_start = eastern.localize(new_start)
+                            new_end = eastern.localize(new_end)
+                        except:
+                            # Fallback: just use the datetime without timezone
+                            pass
+                    
+                    component['DTSTART'] = new_start
+                    component['DTEND'] = new_end
+                    
+                    print(f"  Standardized to 3:00 PM Eastern (1 hour duration)")
                 
                 print(f"  Cleaned event: {component.get('SUMMARY', 'Untitled')}")
         
@@ -168,6 +217,7 @@ def main():
     
     print(f"Found {len(calendar_links)} unique calendar links")
     
+    # Create master calendar
     master_cal = Calendar()
     master_cal.add('prodid', '-//IHS Diabetes Calendar//github.com//')
     master_cal.add('version', '2.0')
@@ -175,6 +225,14 @@ def main():
     master_cal.add('method', 'PUBLISH')
     master_cal.add('x-wr-calname', 'IHS Advancements in Diabetes Training')
     master_cal.add('x-wr-caldesc', 'Calendar of IHS Diabetes training webinars')
+    
+    # Add the VTIMEZONE component
+    tz_cal = Calendar.from_ical(VTIMEZONE_EASTERN)
+    for component in tz_cal.walk():
+        if component.name == "VTIMEZONE":
+            master_cal.add_component(component)
+            print("Added VTIMEZONE: Eastern Time")
+            break
     
     events_added = 0
     for i, link_info in enumerate(calendar_links, 1):
