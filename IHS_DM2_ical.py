@@ -90,7 +90,7 @@ def clean_description(description):
     return clean
 
 def fetch_and_clean_ics(url):
-    """Download, parse, and clean a single ICS file."""
+    """Download and manually parse an ICS file without using icalendar."""
     headers = {'User-Agent': USER_AGENT}
     
     try:
@@ -102,39 +102,92 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        # Get the raw content as text
+        # Get the raw content and decode to text
         raw_content = response.content
         
-        # Try to decode with UTF-8, removing any BOM
+        # Remove BOM if present
         if raw_content.startswith(b'\xef\xbb\xbf'):
-            text_content = raw_content[3:].decode('utf-8')
-        else:
-            text_content = raw_content.decode('utf-8', errors='ignore')
+            raw_content = raw_content[3:]
+        
+        # Decode to text
+        text_content = raw_content.decode('utf-8', errors='ignore')
         
         # Remove any stray BOM characters
         text_content = text_content.replace('\ufeff', '')
         
-        # Normalize line endings: convert \n to \r\n
-        # But be careful not to double-convert \r\n
-        text_content = text_content.replace('\r\n', '\n')  # First, standardize to \n
-        text_content = text_content.replace('\n', '\r\n')  # Then convert to \r\n
+        # Split into lines, handling both CRLF and LF
+        lines = text_content.replace('\r\n', '\n').split('\n')
         
-        # Convert back to bytes for the parser
-        cleaned_bytes = text_content.encode('utf-8')
+        # Find the VEVENT block
+        event_start = -1
+        event_end = -1
+        in_event = False
         
-        # Parse the cleaned content
-        cal = Calendar.from_ical(cleaned_bytes)
+        for i, line in enumerate(lines):
+            if line.strip() == 'BEGIN:VEVENT':
+                event_start = i
+                in_event = True
+            elif line.strip() == 'END:VEVENT' and in_event:
+                event_end = i
+                break
         
-        for component in cal.walk():
-            if component.name == "VEVENT":
-                if 'X-ALT-DESC' in component:
-                    del component['X-ALT-DESC']
-                
-                if 'DESCRIPTION' in component:
-                    component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
-                
-                print(f"  Cleaned event: {component.get('SUMMARY', 'Untitled')}")
+        if event_start == -1 or event_end == -1:
+            print("  No VEVENT found in ICS")
+            return None
         
+        # Extract the event lines
+        event_lines = lines[event_start:event_end + 1]
+        
+        # Parse the event data
+        event_data = {}
+        for line in event_lines:
+            if ':' in line:
+                key, value = line.split(':', 1)
+                key = key.strip()
+                value = value.strip()
+                event_data[key] = value
+        
+        # Create a minimal calendar with the event
+        cal = Calendar()
+        cal.add('prodid', '-//IHS Diabetes Calendar//github.com//')
+        cal.add('version', '2.0')
+        
+        # Create the event
+        event = Event()
+        
+        # Add the event data
+        if 'SUMMARY' in event_data:
+            event.add('summary', event_data['SUMMARY'])
+        else:
+            event.add('summary', 'IHS Diabetes Training')
+        
+        if 'DTSTART' in event_data:
+            event.add('dtstart', event_data['DTSTART'])
+        
+        if 'DTEND' in event_data:
+            event.add('dtend', event_data['DTEND'])
+        
+        if 'DESCRIPTION' in event_data:
+            # Clean the description
+            clean_desc = clean_description(event_data['DESCRIPTION'])
+            if clean_desc:
+                event.add('description', clean_desc)
+        
+        if 'LOCATION' in event_data:
+            event.add('location', event_data['LOCATION'])
+        
+        if 'UID' in event_data:
+            event.add('uid', event_data['UID'])
+        else:
+            event.add('uid', f"{datetime.now().timestamp()}@ihs.gov")
+        
+        if 'DTSTAMP' in event_data:
+            event.add('dtstamp', event_data['DTSTAMP'])
+        
+        # Add the event to the calendar
+        cal.add_component(event)
+        
+        print(f"  Manually parsed event: {event_data.get('SUMMARY', 'Untitled')}")
         return cal
         
     except Exception as e:
