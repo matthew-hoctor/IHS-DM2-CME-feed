@@ -1,228 +1,228 @@
-BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//IHS Diabetes Calendar//github.com//
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-X-WR-CALDESC:Calendar of IHS Diabetes training webinars
-X-WR-CALNAME:IHS Advancements in Diabetes Training
-BEGIN:VTIMEZONE
-TZID:Eastern Time
-BEGIN:STANDARD
-DTSTART:20061101T020000
-RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=11
-TZNAME:Standard Time
-TZOFFSETFROM:-0400
-TZOFFSETTO:-0500
-END:STANDARD
-BEGIN:DAYLIGHT
-DTSTART:20060301T020000
-RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=2SU;BYMONTH=3
-TZNAME:Daylight Savings Time
-TZOFFSETFROM:-0500
-TZOFFSETTO:-0400
-END:DAYLIGHT
-END:VTIMEZONE
-BEGIN:VEVENT
-SUMMARY:Putting Social Determinants into Practice: How CHRs Strengthen Tri
- bal Diabetes Programs
-DTSTART;TZID=Eastern Time:20260708T150000
-DTEND;TZID=Eastern Time:20260708T160000
-DTSTAMP:20260705T163455
-UID:1783290895210.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m58d25987b9aa6e351ddfc872fc5599b2 Webinar number (access code): 2837 318
-  0868 Webinar password: 6XRyYtFmS33(69799836 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8373180868 & tel:%2B1-1-415-527-5035\,\,*01*28373180868%2369799836%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m58d25987b9aa6e351dd
- fc872fc5599b2
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Results from the 2024 and 2025 IHS Diabetes Care and Outcomes Audi
- t
-DTSTART;TZID=Eastern Time:20260722T150000
-DTEND;TZID=Eastern Time:20260722T160000
-DTSTAMP:20260705T163456
-UID:1783290896610.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m20404d92bdedbb404644349214f3dd86 Webinar number (access code): 2826 406
-  1296 Webinar password: auY8F29bBuN(28983292 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8264061296 & tel:%2B1-1-415-527-5035\,\,*01*28264061296%2328983292%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m20404d92bdedbb40464
- 4349214f3dd86
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Beyond Type 1 & Type 2 Diabetes: Exploring Diabetes of the Exocrin
- e Pancreas (Type 3c)
-DTSTART;TZID=Eastern Time:20260819T150000
-DTEND;TZID=Eastern Time:20260819T160000
-DTSTAMP:20260705T163458
-UID:1783290898124.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=me98f788a3a0d7fc22f0bb2e71f1949ca Webinar number (access code): 2826 092
-  9695 Webinar password: vaEAbZaH493(82322924 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8260929695 & tel:%2B1-1-415-527-5035\,\,*01*28260929695%2382322924%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=me98f788a3a0d7fc22f0
- bb2e71f1949ca
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Small Shifts\, Big Impact: Integrating Nutrition Standards\, CKM C
- are\, and Nutrition-Focused Medication Management in Diabetes
-DTSTART;TZID=Eastern Time:20260923T150000
-DTEND;TZID=Eastern Time:20260923T160000
-DTSTAMP:20260705T163459
-UID:1783290899643.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m6352d34aa233c6c3b477ff6155f81c97 Webinar number (access code): 2819 364
-  5518 Webinar password: mMRq7FS5J3n(66777375 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8193645518 & tel:%2B1-1-415-527-5035\,\,*01*28193645518%2366777375%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m6352d34aa233c6c3b47
- 7ff6155f81c97
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Cultural Adaptation of CDC's National Diabetes Prevention Program 
- PreventT2 Curriculum for American Indian and Alaska Native Participants
-DTSTART;TZID=Eastern Time:20260930T150000
-DTEND;TZID=Eastern Time:20260930T160000
-DTSTAMP:20260705T163501
-UID:1783290901189.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m472da6d0c28f59405a8934a56be04dc6 Webinar number (access code): 2821 122
-  9756 Webinar password: SMsgRGJm752(76747456 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8211229756 & tel:%2B1-1-415-527-5035\,\,*01*28211229756%2376747456%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m472da6d0c28f59405a8
- 934a56be04dc6
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Trauma\, Nutrition\, and Metabolic Resilience: Implications for Di
- abetes Prevention and Care
-DTSTART;TZID=Eastern Time:20261007T150000
-DTEND;TZID=Eastern Time:20261007T160000
-DTSTAMP:20260705T163502
-UID:1783290902721.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m5733b064cb98d76b1092d4676c8483f7 Webinar number (access code): 2833 957
-  4430 Webinar password: UdSPJXjA267(83775952 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8339574430 & tel:%2B1-1-415-527-5035\,\,*01*28339574430%2383775952%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m5733b064cb98d76b109
- 2d4676c8483f7
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Promoting Healthy Lifestyles for Native Youth: The Boys & Girls Cl
- ubs in Indian Country T.R.A.I.L. Project
-DTSTART;TZID=Eastern Time:20261014T150000
-DTEND;TZID=Eastern Time:20261014T160000
-DTSTAMP:20260705T163504
-UID:1783290904224.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m630dd41cd19fe1c1c89ae480f993a084 Webinar number (access code): 2829 477
-  2807 Webinar password: smYHuuDx796(76948839 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8294772807 & tel:%2B1-1-415-527-5035\,\,*01*28294772807%2376948839%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m630dd41cd19fe1c1c89
- ae480f993a084
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-END:VCALENDAR
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//IHS Diabetes Calendar//github.com//
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALDESC:Calendar of IHS Diabetes training webinars
+X-WR-CALNAME:IHS Advancements in Diabetes Training
+BEGIN:VTIMEZONE
+TZID:Eastern Time
+BEGIN:STANDARD
+DTSTART:20061101T020000
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=1SU;BYMONTH=11
+TZNAME:Standard Time
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:20060301T020000
+RRULE:FREQ=YEARLY;INTERVAL=1;BYDAY=2SU;BYMONTH=3
+TZNAME:Daylight Savings Time
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Putting Social Determinants into Practice: How CHRs Strengthen Tri
+ bal Diabetes Programs
+DTSTART;TZID=Eastern Time:20260708T150000
+DTEND;TZID=Eastern Time:20260708T160000
+DTSTAMP:20260705T164311
+UID:1783291391714.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m58d25987b9aa6e351ddfc872fc5599b2 Webinar number (access code): 2837 318
+  0868 Webinar password: 6XRyYtFmS33(69799836 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8373180868 & tel:%2B1-1-415-527-5035\,\,*01*28373180868%2369799836%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m58d25987b9aa6e351dd
+ fc872fc5599b2
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Results from the 2024 and 2025 IHS Diabetes Care and Outcomes Audi
+ t
+DTSTART;TZID=Eastern Time:20260722T150000
+DTEND;TZID=Eastern Time:20260722T160000
+DTSTAMP:20260705T164313
+UID:1783291393367.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m20404d92bdedbb404644349214f3dd86 Webinar number (access code): 2826 406
+  1296 Webinar password: auY8F29bBuN(28983292 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8264061296 & tel:%2B1-1-415-527-5035\,\,*01*28264061296%2328983292%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m20404d92bdedbb40464
+ 4349214f3dd86
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Beyond Type 1 & Type 2 Diabetes: Exploring Diabetes of the Exocrin
+ e Pancreas (Type 3c)
+DTSTART;TZID=Eastern Time:20260819T150000
+DTEND;TZID=Eastern Time:20260819T160000
+DTSTAMP:20260705T164314
+UID:1783291394876.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=me98f788a3a0d7fc22f0bb2e71f1949ca Webinar number (access code): 2826 092
+  9695 Webinar password: vaEAbZaH493(82322924 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8260929695 & tel:%2B1-1-415-527-5035\,\,*01*28260929695%2382322924%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=me98f788a3a0d7fc22f0
+ bb2e71f1949ca
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Small Shifts\, Big Impact: Integrating Nutrition Standards\, CKM C
+ are\, and Nutrition-Focused Medication Management in Diabetes
+DTSTART;TZID=Eastern Time:20260923T150000
+DTEND;TZID=Eastern Time:20260923T160000
+DTSTAMP:20260705T164316
+UID:1783291396466.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m6352d34aa233c6c3b477ff6155f81c97 Webinar number (access code): 2819 364
+  5518 Webinar password: mMRq7FS5J3n(66777375 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8193645518 & tel:%2B1-1-415-527-5035\,\,*01*28193645518%2366777375%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m6352d34aa233c6c3b47
+ 7ff6155f81c97
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Cultural Adaptation of CDC's National Diabetes Prevention Program 
+ PreventT2 Curriculum for American Indian and Alaska Native Participants
+DTSTART;TZID=Eastern Time:20260930T150000
+DTEND;TZID=Eastern Time:20260930T160000
+DTSTAMP:20260705T164318
+UID:1783291398049.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m472da6d0c28f59405a8934a56be04dc6 Webinar number (access code): 2821 122
+  9756 Webinar password: SMsgRGJm752(76747456 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8211229756 & tel:%2B1-1-415-527-5035\,\,*01*28211229756%2376747456%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m472da6d0c28f59405a8
+ 934a56be04dc6
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Trauma\, Nutrition\, and Metabolic Resilience: Implications for Di
+ abetes Prevention and Care
+DTSTART;TZID=Eastern Time:20261007T150000
+DTEND;TZID=Eastern Time:20261007T160000
+DTSTAMP:20260705T164319
+UID:1783291399640.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m5733b064cb98d76b1092d4676c8483f7 Webinar number (access code): 2833 957
+  4430 Webinar password: UdSPJXjA267(83775952 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8339574430 & tel:%2B1-1-415-527-5035\,\,*01*28339574430%2383775952%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m5733b064cb98d76b109
+ 2d4676c8483f7
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Promoting Healthy Lifestyles for Native Youth: The Boys & Girls Cl
+ ubs in Indian Country T.R.A.I.L. Project
+DTSTART;TZID=Eastern Time:20261014T150000
+DTEND;TZID=Eastern Time:20261014T160000
+DTSTAMP:20260705T164324
+UID:1783291404249.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m630dd41cd19fe1c1c89ae480f993a084 Webinar number (access code): 2829 477
+  2807 Webinar password: smYHuuDx796(76948839 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8294772807 & tel:%2B1-1-415-527-5035\,\,*01*28294772807%2376948839%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m630dd41cd19fe1c1c89
+ ae480f993a084
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
