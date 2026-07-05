@@ -16,8 +16,14 @@ IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
 USER_AGENT = "IHS-DM2-CME-feed/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
+def strip_bom(content):
+    """Remove UTF-8 BOM if present."""
+    if content.startswith(b'\xef\xbb\xbf'):
+        return content[3:]
+    return content
+
 def fetch_page_with_retry(url, max_retries=3):
-    # Fetch a page with retry logic
+    """Fetch a page with retry logic."""
     headers = {'User-Agent': USER_AGENT}
     for attempt in range(max_retries):
         try:
@@ -33,7 +39,7 @@ def fetch_page_with_retry(url, max_retries=3):
     return None
 
 def find_calendar_links(html_content, base_url):
-    # Extract all calendar links
+    """Extract all calendar links from the page HTML."""
     soup = BeautifulSoup(html_content, 'html.parser')
     calendar_links = []
     
@@ -48,20 +54,15 @@ def find_calendar_links(html_content, base_url):
             if cal_id_match:
                 cal_id = cal_id_match.group(1)
                 
-                # Check if this is actually an ICS link by looking at the nearby text
-                # The span at the end of the line should indicate it's an ICS file
+                # Check if this is actually an ICS link (look for nearby text)
                 parent = link.parent
                 if parent:
-                    # Look for "ICS" text in the parent element
                     parent_text = parent.get_text()
                     if 'ICS' in parent_text or 'ics' in parent_text.lower():
-                        # Clean up the URL - remove duplicate href attributes
-                        # The href itself is clean, just use the first occurrence
                         full_url = href
                         if full_url.startswith('/'):
                             full_url = base_url + full_url
                         
-                        # Get the calID for deduplication
                         calendar_links.append({
                             'url': full_url,
                             'cal_id': cal_id,
@@ -81,18 +82,14 @@ def find_calendar_links(html_content, base_url):
     return unique_links
 
 def clean_description(description):
-    # Remove HTML tags and clean up the description text
+    """Remove HTML tags and clean up the description text."""
     if not description:
         return ""
     
-    # If it's a bytes object, decode it
     if isinstance(description, bytes):
         description = description.decode('utf-8', errors='ignore')
     
-    # Remove HTML tags
     clean = re.sub(r'<[^>]+>', '', str(description))
-    
-    # Clean up excessive whitespace
     clean = re.sub(r'\s+', ' ', clean)
     clean = clean.strip()
     
@@ -111,16 +108,15 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        cal = Calendar.from_ical(response.content)
+        # Strip BOM before parsing
+        content = strip_bom(response.content)
+        cal = Calendar.from_ical(content)
         
-        # Process each component
         for component in cal.walk():
             if component.name == "VEVENT":
-                # Remove HTML version
                 if 'X-ALT-DESC' in component:
                     del component['X-ALT-DESC']
                 
-                # Clean up plain description
                 if 'DESCRIPTION' in component:
                     component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
                 
@@ -136,7 +132,6 @@ def main():
     print(f"IHS Calendar Scraper started at {datetime.now()}")
     print(f"Fetching page: {IHS_URL}")
     
-    # Get the main page
     try:
         response = fetch_page_with_retry(IHS_URL)
         if not response:
@@ -146,7 +141,6 @@ def main():
         print(f"ERROR: {e}")
         return
     
-    # Find all calendar links
     print("Scanning for calendar links...")
     calendar_links = find_calendar_links(response.text, "https://www.ihs.gov")
     
@@ -157,32 +151,26 @@ def main():
     
     print(f"Found {len(calendar_links)} unique calendar links")
     
-    # Create master calendar
     master_cal = Calendar()
     master_cal.add('prodid', '-//IHS Diabetes Calendar//github.com//')
     master_cal.add('version', '2.0')
     master_cal.add('calscale', 'GREGORIAN')
     master_cal.add('method', 'PUBLISH')
-    
-    # Add X-WR-CALNAME for better display
     master_cal.add('x-wr-calname', 'IHS Advancements in Diabetes Training')
     master_cal.add('x-wr-caldesc', 'Calendar of IHS Diabetes training webinars')
     
-    # Process each calendar URL
     events_added = 0
     for i, link_info in enumerate(calendar_links, 1):
         ics_url = link_info['url']
         print(f"\nProcessing {i}/{len(calendar_links)}: {link_info['cal_id']}")
         print(f"  URL: {ics_url}")
         
-        # Respectfully pause between downloads
         if i > 1:
             time.sleep(1)
         
         cleaned_cal = fetch_and_clean_ics(ics_url)
         
         if cleaned_cal:
-            # Add all events to master calendar
             for component in cleaned_cal.walk():
                 if component.name == "VEVENT":
                     master_cal.add_component(component)
@@ -190,7 +178,6 @@ def main():
     
     print(f"\nAdded {events_added} events to calendar")
     
-    # Write output file
     try:
         with open(OUTPUT_FILE, 'wb') as f:
             f.write(master_cal.to_ical())
