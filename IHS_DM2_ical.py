@@ -102,16 +102,41 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        # Get the raw content as bytes
-        content = response.content
+        # Get the raw content and detect encoding
+        raw_content = response.content
         
-        # Strip BOM if present
-        if content.startswith(b'\xef\xbb\xbf'):
-            content = content[3:]
-            print("  Stripped BOM from file")
+        # Try to decode as UTF-8 with BOM removal
+        try:
+            # First try: UTF-8 with BOM removal
+            if raw_content.startswith(b'\xef\xbb\xbf'):
+                text_content = raw_content[3:].decode('utf-8')
+                print("  Stripped UTF-8 BOM")
+            else:
+                # Try to detect encoding
+                import chardet
+                detected = chardet.detect(raw_content)
+                encoding = detected.get('encoding', 'utf-8')
+                text_content = raw_content.decode(encoding, errors='ignore')
+        except:
+            # Fallback: decode with UTF-8, ignoring errors
+            text_content = raw_content.decode('utf-8', errors='ignore')
+        
+        # Remove any remaining BOM characters from the text
+        text_content = text_content.replace('\ufeff', '')
+        
+        # Also handle the case where BOM is in the line itself
+        lines = text_content.split('\n')
+        cleaned_lines = []
+        for line in lines:
+            # Remove BOM from individual lines if present
+            cleaned_lines.append(line.replace('\ufeff', ''))
+        text_content = '\n'.join(cleaned_lines)
+        
+        # Convert back to bytes for the parser
+        cleaned_bytes = text_content.encode('utf-8')
         
         # Parse the cleaned content
-        cal = Calendar.from_ical(content)
+        cal = Calendar.from_ical(cleaned_bytes)
         
         for component in cal.walk():
             if component.name == "VEVENT":
