@@ -14,7 +14,7 @@ from icalendar import Calendar, Event, vDatetime
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS-Calendar-Scraper/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS-Calendar-Scraper/1.0 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
 # Standard VTIMEZONE definition for Eastern Time
 VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
@@ -56,11 +56,9 @@ def find_calendar_links(html_content, base_url):
     soup = BeautifulSoup(html_content, 'html.parser')
     calendar_links = []
     
-    # Find all anchor tags
     for link in soup.find_all('a', href=True):
         href = link['href']
         
-        # Look for calendar links with calID parameter
         if '/diabetes/calendar/?calID=' in href:
             cal_id_match = re.search(r'calID=([A-F0-9]+)', href)
             if cal_id_match:
@@ -76,8 +74,7 @@ def find_calendar_links(html_content, base_url):
                         
                         calendar_links.append({
                             'url': full_url,
-                            'cal_id': cal_id,
-                            'text': link.get_text(strip=True)
+                            'cal_id': cal_id
                         })
                         
                         print(f"Found calendar link: {full_url}")
@@ -112,7 +109,6 @@ def clean_description(description):
     if join_match:
         clean = join_match.group(1).strip()
     else:
-        # If we can't find the access info, truncate to reasonable length
         if len(clean) > 500:
             clean = clean[:497] + '...'
     
@@ -142,7 +138,6 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        # Get the raw content
         raw_content = response.content
         
         # Try to detect encoding from BOM
@@ -159,43 +154,31 @@ def fetch_and_clean_ics(url):
                 text_content = raw_content.decode('utf-16', errors='ignore')
                 print("  Detected UTF-16 encoding (no BOM)")
         
-        # Remove any stray BOM characters
         text_content = text_content.replace('\ufeff', '')
         
-        # Parse the ICS content
         cal = Calendar.from_ical(text_content.encode('utf-8'))
         
         for component in cal.walk():
             if component.name == "VEVENT":
-                # Remove HTML version entirely - this crashes some calendar apps
                 if 'X-ALT-DESC' in component:
                     del component['X-ALT-DESC']
                 
-                # Clean up description - shorten to essential info and remove newlines
                 if 'DESCRIPTION' in component:
                     component['DESCRIPTION'] = clean_description(component['DESCRIPTION'])
                 
-                # Fix the time: all events should be 3:00 PM Eastern (12:00 PM Pacific)
-                # and 1 hour duration
                 if 'DTSTART' in component and 'DTEND' in component:
                     dtstart = component['DTSTART']
-                    
-                    # Get the date from the existing start time
                     event_date = dtstart.dt.date()
                     
-                    # Create datetime objects for the new times
                     new_start = datetime.combine(event_date, dt_time(15, 0, 0))
                     new_end = datetime.combine(event_date, dt_time(16, 0, 0))
                     
-                    # Create vDatetime objects
                     vstart = vDatetime(new_start)
                     vend = vDatetime(new_end)
                     
-                    # Add TZID parameter to the vDatetime objects
                     vstart.params['TZID'] = ['Eastern Time']
                     vend.params['TZID'] = ['Eastern Time']
                     
-                    # Assign the vDatetime objects with parameters
                     component['DTSTART'] = vstart
                     component['DTEND'] = vend
                     
@@ -232,7 +215,6 @@ def main():
     
     print(f"Found {len(calendar_links)} unique calendar links")
     
-    # Create master calendar
     master_cal = Calendar()
     master_cal.add('prodid', '-//IHS Diabetes Calendar//github.com//')
     master_cal.add('version', '2.0')
@@ -241,7 +223,6 @@ def main():
     master_cal.add('x-wr-calname', 'IHS Advancements in Diabetes Training')
     master_cal.add('x-wr-caldesc', 'Calendar of IHS Diabetes training webinars')
     
-    # Add the VTIMEZONE component
     tz_cal = Calendar.from_ical(VTIMEZONE_EASTERN)
     for component in tz_cal.walk():
         if component.name == "VTIMEZONE":
@@ -268,20 +249,15 @@ def main():
     
     print(f"\nAdded {events_added} events to calendar")
     
-    # Write the file with CRLF line endings
+    # Write the file with CRLF line endings and no blank lines
     try:
-        # Generate the ICS content as bytes
         ics_bytes = master_cal.to_ical()
-        
-        # Convert to text, ensure CRLF line endings
         ics_text = ics_bytes.decode('utf-8')
         
-        # Remove any blank lines
-        lines = ics_text.splitlines()
-        non_empty_lines = [line for line in lines if line.strip()]
-        ics_text = '\r\n'.join(non_empty_lines)
+        # Split into lines, remove empty ones, then join with CRLF
+        lines = [line for line in ics_text.splitlines() if line.strip()]
+        ics_text = '\r\n'.join(lines)
         
-        # Write with CRLF line endings
         with open(OUTPUT_FILE, 'w', encoding='utf-8', newline='\r\n') as f:
             f.write(ics_text)
         
