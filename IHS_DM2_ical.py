@@ -16,12 +16,6 @@ IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
 USER_AGENT = "IHS-DM2-CME-feed/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
-def strip_bom(content):
-    """Remove UTF-8 BOM if present."""
-    if content.startswith(b'\xef\xbb\xbf'):
-        return content[3:]
-    return content
-
 def fetch_page_with_retry(url, max_retries=3):
     """Fetch a page with retry logic."""
     headers = {'User-Agent': USER_AGENT}
@@ -108,8 +102,15 @@ def fetch_and_clean_ics(url):
         return None
     
     try:
-        # Strip BOM before parsing
-        content = strip_bom(response.content)
+        # Get the raw content as bytes
+        content = response.content
+        
+        # Strip BOM if present
+        if content.startswith(b'\xef\xbb\xbf'):
+            content = content[3:]
+            print("  Stripped BOM from file")
+        
+        # Parse the cleaned content
         cal = Calendar.from_ical(content)
         
         for component in cal.walk():
