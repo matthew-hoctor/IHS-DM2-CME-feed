@@ -14,7 +14,7 @@ from icalendar import Calendar, Event
 # Configuration
 IHS_URL = "https://www.ihs.gov/diabetes/training/"
 OUTPUT_FILE = "index.ics"
-USER_AGENT = "IHS_DM2_ical/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
+USER_AGENT = "IHS-DM2-CME-feed/0.1 (github.com/matthew-hoctor/IHS-DM2-CME-feed)"
 
 # Standard VTIMEZONE definition for Eastern Time
 VTIMEZONE_EASTERN = """BEGIN:VTIMEZONE
@@ -159,33 +159,20 @@ def fetch_and_clean_ics(url):
                 # and 1 hour duration
                 if 'DTSTART' in component and 'DTEND' in component:
                     dtstart = component['DTSTART']
-                    dtend = component['DTEND']
                     
                     # Get the date from the existing start time
                     event_date = dtstart.dt.date()
                     
-                    # Set start time to 3:00 PM Eastern
-                    new_start = datetime.combine(event_date, dt_time(15, 0, 0))  # 3:00 PM
-                    new_end = datetime.combine(event_date, dt_time(16, 0, 0))    # 4:00 PM (1 hour later)
+                    # Format the date as YYYYMMDDTHHMMSS
+                    start_str = event_date.strftime('%Y%m%d') + 'T150000'
+                    end_str = event_date.strftime('%Y%m%d') + 'T160000'
                     
-                    # Preserve the timezone information
-                    if hasattr(dtstart, 'dt') and hasattr(dtstart.dt, 'tzinfo'):
-                        # If the original had timezone info, use it
-                        try:
-                            import pytz
-                            eastern = pytz.timezone('America/New_York')
-                            new_start = eastern.localize(new_start)
-                            new_end = eastern.localize(new_end)
-                        except:
-                            # Fallback: just use the datetime without timezone
-                            pass
-                    
-                    # Replace with proper iCalendar format
-                    # We need to use the component's set_dt method or assign with proper formatting
-                    component['DTSTART'] = new_start
-                    component['DTEND'] = new_end
+                    # Assign the formatted strings directly
+                    component['DTSTART'] = start_str
+                    component['DTEND'] = end_str
                     
                     print(f"  Standardized to 3:00 PM Eastern (1 hour duration)")
+                    print(f"  DTSTART: {start_str}, DTEND: {end_str}")
                 
                 print(f"  Cleaned event: {component.get('SUMMARY', 'Untitled')}")
         
