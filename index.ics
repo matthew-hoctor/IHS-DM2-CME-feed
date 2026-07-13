@@ -23,41 +23,12 @@ TZOFFSETTO:-0400
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-SUMMARY:Putting Social Determinants into Practice: How CHRs Strengthen Tri
- bal Diabetes Programs
-DTSTART;TZID=Eastern Time:20260708T150000
-DTEND;TZID=Eastern Time:20260708T160000
-DTSTAMP:20260707T142158
-UID:1783455718236.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m58d25987b9aa6e351ddfc872fc5599b2 Webinar number (access code): 2837 318
-  0868 Webinar password: 6XRyYtFmS33(69799836 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8373180868 & tel:%2B1-1-415-527-5035\,\,*01*28373180868%2369799836%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m58d25987b9aa6e351dd
- fc872fc5599b2
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Results from the 2024 and 2025 IHS Diabetes Care and Outcomes Audi
  t
 DTSTART;TZID=Eastern Time:20260722T150000
 DTEND;TZID=Eastern Time:20260722T160000
-DTSTAMP:20260707T142159
-UID:1783455719839.CFLIB.ORG
+DTSTAMP:20260713T032718
+UID:1783934838325.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m20404d92bdedbb404644349214f3dd86 Webinar number (access code): 2826 406
@@ -85,8 +56,8 @@ SUMMARY:Beyond Type 1 & Type 2 Diabetes: Exploring Diabetes of the Exocrin
  e Pancreas (Type 3c)
 DTSTART;TZID=Eastern Time:20260819T150000
 DTEND;TZID=Eastern Time:20260819T160000
-DTSTAMP:20260707T142201
-UID:1783455721422.CFLIB.ORG
+DTSTAMP:20260713T032719
+UID:1783934839944.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=me98f788a3a0d7fc22f0bb2e71f1949ca Webinar number (access code): 2826 092
@@ -110,12 +81,40 @@ TRIGGER:-PT30M
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Eat Real Food: A Look at the New Dietary Guidelines
+DTSTART;TZID=Eastern Time:20260826T150000
+DTEND;TZID=Eastern Time:20260826T160000
+DTSTAMP:20260713T032721
+UID:1783934841495.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m18682e0d0c6cc61b0634e700eef54741 Webinar number (access code): 2826 607
+  2408 Webinar password: VYhr3U6Rtg5(89473867 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8266072408 & tel:%2B1-1-415-527-5035\,\,*01*28266072408%2389473867%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m18682e0d0c6cc61b063
+ 4e700eef54741
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Small Shifts\, Big Impact: Integrating Nutrition Standards\, CKM C
  are\, and Nutrition-Focused Medication Management in Diabetes
 DTSTART;TZID=Eastern Time:20260923T150000
 DTEND;TZID=Eastern Time:20260923T160000
-DTSTAMP:20260707T142203
-UID:1783455723002.CFLIB.ORG
+DTSTAMP:20260713T032723
+UID:1783934843107.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m6352d34aa233c6c3b477ff6155f81c97 Webinar number (access code): 2819 364
@@ -143,8 +142,8 @@ SUMMARY:Cultural Adaptation of CDC's National Diabetes Prevention Program
  PreventT2 Curriculum for American Indian and Alaska Native Participants
 DTSTART;TZID=Eastern Time:20260930T150000
 DTEND;TZID=Eastern Time:20260930T160000
-DTSTAMP:20260707T142204
-UID:1783455724580.CFLIB.ORG
+DTSTAMP:20260713T032724
+UID:1783934844714.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m472da6d0c28f59405a8934a56be04dc6 Webinar number (access code): 2821 122
@@ -172,8 +171,8 @@ SUMMARY:Trauma\, Nutrition\, and Metabolic Resilience: Implications for Di
  abetes Prevention and Care
 DTSTART;TZID=Eastern Time:20261007T150000
 DTEND;TZID=Eastern Time:20261007T160000
-DTSTAMP:20260707T142206
-UID:1783455726108.CFLIB.ORG
+DTSTAMP:20260713T032726
+UID:1783934846335.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m5733b064cb98d76b1092d4676c8483f7 Webinar number (access code): 2833 957
@@ -201,8 +200,8 @@ SUMMARY:Promoting Healthy Lifestyles for Native Youth: The Boys & Girls Cl
  ubs in Indian Country T.R.A.I.L. Project
 DTSTART;TZID=Eastern Time:20261014T150000
 DTEND;TZID=Eastern Time:20261014T160000
-DTSTAMP:20260707T142207
-UID:1783455727621.CFLIB.ORG
+DTSTAMP:20260713T032727
+UID:1783934847940.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m630dd41cd19fe1c1c89ae480f993a084 Webinar number (access code): 2829 477
