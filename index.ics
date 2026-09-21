@@ -27,8 +27,8 @@ SUMMARY:Small Shifts\, Big Impact: Integrating Nutrition Standards\, CKM C
  are\, and Nutrition-Focused Medication Management in Diabetes
 DTSTART;TZID=Eastern Time:20260923T150000
 DTEND;TZID=Eastern Time:20260923T160000
-DTSTAMP:20260914T055724
-UID:1789387044018.CFLIB.ORG
+DTSTAMP:20260921T060820
+UID:1789992500624.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m6352d34aa233c6c3b477ff6155f81c97 Webinar number (access code): 2819 364
@@ -56,8 +56,8 @@ SUMMARY:Made for Us\, By Us: Get to Know CDC's New Native PreventT2 Curric
  ulum and Resources
 DTSTART;TZID=Eastern Time:20260930T150000
 DTEND;TZID=Eastern Time:20260930T160000
-DTSTAMP:20260914T055725
-UID:1789387045561.CFLIB.ORG
+DTSTAMP:20260921T060822
+UID:1789992502299.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m472da6d0c28f59405a8934a56be04dc6 Webinar number (access code): 2821 122
@@ -85,8 +85,8 @@ SUMMARY:Trauma\, Nutrition\, and Metabolic Resilience: Implications for Di
  abetes Prevention and Care
 DTSTART;TZID=Eastern Time:20261007T150000
 DTEND;TZID=Eastern Time:20261007T160000
-DTSTAMP:20260914T055727
-UID:1789387047114.CFLIB.ORG
+DTSTAMP:20260921T060823
+UID:1789992503969.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m5733b064cb98d76b1092d4676c8483f7 Webinar number (access code): 2833 957
@@ -114,8 +114,8 @@ SUMMARY:Promoting Healthy Lifestyles for Native Youth: The Boys & Girls Cl
  ubs in Indian Country T.R.A.I.L. Project
 DTSTART;TZID=Eastern Time:20261014T150000
 DTEND;TZID=Eastern Time:20261014T160000
-DTSTAMP:20260914T055728
-UID:1789387048529.CFLIB.ORG
+DTSTAMP:20260921T060825
+UID:1789992505624.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m630dd41cd19fe1c1c89ae480f993a084 Webinar number (access code): 2829 477
@@ -129,6 +129,92 @@ DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  rationhelp.cisco.com/article/WBX000029055
 LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m630dd41cd19fe1c1c89
  ae480f993a084
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Who Needs What When? An Update on Standards of Care for Kidney Car
+ e in Diabetes
+DTSTART;TZID=Eastern Time:20261104T150000
+DTEND;TZID=Eastern Time:20261104T160000
+DTSTAMP:20260921T060827
+UID:1789992507291.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=mafaca1528e012934319aeae6d3bd1e2e Webinar number (access code): 2822 963
+  5991 Webinar password: RbQ3nX32957(72736932 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8229635991 & tel:%2B1-1-415-527-5035\,\,*01*28229635991%2372736932%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=mafaca1528e012934319
+ aeae6d3bd1e2e
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:The Mind-Body Practices in Diabetes: Stress\, Mindfulness\, and Me
+ tabolic Health
+DTSTART;TZID=Eastern Time:20261202T150000
+DTEND;TZID=Eastern Time:20261202T160000
+DTSTAMP:20260921T060828
+UID:1789992508834.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=m766c2d7734d5f014e7f389c11d70bdc7 Webinar number (access code): 2830 488
+  2831 Webinar password: TBf4n2baNi5(82346222 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8304882831 & tel:%2B1-1-415-527-5035\,\,*01*28304882831%2382346222%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m766c2d7734d5f014e7f
+ 389c11d70bdc7
+ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
+PRIORITY:1
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Progress and Gaps in Strengths-Based Language
+DTSTART;TZID=Eastern Time:20270113T150000
+DTEND;TZID=Eastern Time:20270113T160000
+DTSTAMP:20260921T060830
+UID:1789992510493.CFLIB.ORG
+CLASS:PUBLIC
+DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
+ D=mdf92bdba3dc94b56ede5fbbc37b23654 Webinar number (access code): 2818 276
+  2852 Webinar password: RNwe3nyry83(76933697 from phones and video systems
+ ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
+ 8182762852 & tel:%2B1-1-415-527-5035\,\,*01*28182762852%2376933697%23*01* 
+ United States Toll Some mobile devices may ask attendees to enter a numeri
+ c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
+ -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
+ 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
+ rationhelp.cisco.com/article/WBX000029055
+LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=mdf92bdba3dc94b56ede
+ 5fbbc37b23654
 ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
 PRIORITY:1
 TRANSP:OPAQUE
