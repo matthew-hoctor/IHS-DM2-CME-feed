@@ -23,41 +23,12 @@ TZOFFSETTO:-0400
 END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
-SUMMARY:Made for Us\, By Us: Get to Know CDC's New Native PreventT2 Curric
- ulum and Resources
-DTSTART;TZID=Eastern Time:20260930T150000
-DTEND;TZID=Eastern Time:20260930T160000
-DTSTAMP:20260928T070338
-UID:1790600618724.CFLIB.ORG
-CLASS:PUBLIC
-DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
- D=m472da6d0c28f59405a8934a56be04dc6 Webinar number (access code): 2821 122
-  9756 Webinar password: SMsgRGJm752(76747456 from phones and video systems
- ) TAP TO JOIN FROM A MOBILE DEVICE (ATTENDEES ONLY) +1-1-415-527-5035\,\,2
- 8211229756 & tel:%2B1-1-415-527-5035\,\,*01*28211229756%2376747456%23*01* 
- United States Toll Some mobile devices may ask attendees to enter a numeri
- c password. JOIN BY PHONE +1-1-415-527-5035 United States Toll Global call
- -in numbers https://hhs-ihs.webex.com/hhs-ihs/globalcallin.php?MTID=m2b647
- 17992910ebb1f44fa614c86ee29 Can&chr(39)t join the webinar? https://collabo
- rationhelp.cisco.com/article/WBX000029055
-LOCATION:https://hhs-ihs.webex.com/hhs-ihs/j.php?MTID=m472da6d0c28f59405a8
- 934a56be04dc6
-ORGANIZER;CN="Wendy Castle":MAILTO:Wendy.Castle@ihs.gov
-PRIORITY:1
-TRANSP:OPAQUE
-BEGIN:VALARM
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-TRIGGER:-PT30M
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Trauma\, Nutrition\, and Metabolic Resilience: Implications for Di
  abetes Prevention and Care
 DTSTART;TZID=Eastern Time:20261007T150000
 DTEND;TZID=Eastern Time:20261007T160000
-DTSTAMP:20260928T070340
-UID:1790600620469.CFLIB.ORG
+DTSTAMP:20261005T074556
+UID:1791207956642.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m5733b064cb98d76b1092d4676c8483f7 Webinar number (access code): 2833 957
@@ -85,8 +56,8 @@ SUMMARY:Promoting Healthy Lifestyles for Native Youth: The Boys & Girls Cl
  ubs in Indian Country T.R.A.I.L. Project
 DTSTART;TZID=Eastern Time:20261014T150000
 DTEND;TZID=Eastern Time:20261014T160000
-DTSTAMP:20260928T070342
-UID:1790600622115.CFLIB.ORG
+DTSTAMP:20261005T074558
+UID:1791207958302.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m630dd41cd19fe1c1c89ae480f993a084 Webinar number (access code): 2829 477
@@ -114,8 +85,8 @@ SUMMARY:Who Needs What When? An Update on Standards of Care for Kidney Car
  e in Diabetes
 DTSTART;TZID=Eastern Time:20261104T150000
 DTEND;TZID=Eastern Time:20261104T160000
-DTSTAMP:20260928T070343
-UID:1790600623827.CFLIB.ORG
+DTSTAMP:20261005T074559
+UID:1791207959920.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=mafaca1528e012934319aeae6d3bd1e2e Webinar number (access code): 2822 963
@@ -143,8 +114,8 @@ SUMMARY:The Mind-Body Practices in Diabetes: Stress\, Mindfulness\, and Me
  tabolic Health
 DTSTART;TZID=Eastern Time:20261202T150000
 DTEND;TZID=Eastern Time:20261202T160000
-DTSTAMP:20260928T070345
-UID:1790600625395.CFLIB.ORG
+DTSTAMP:20261005T074601
+UID:1791207961464.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=m766c2d7734d5f014e7f389c11d70bdc7 Webinar number (access code): 2830 488
@@ -171,8 +142,8 @@ BEGIN:VEVENT
 SUMMARY:Progress and Gaps in Strengths-Based Language
 DTSTART;TZID=Eastern Time:20270113T150000
 DTEND;TZID=Eastern Time:20270113T160000
-DTSTAMP:20260928T070346
-UID:1790600626949.CFLIB.ORG
+DTSTAMP:20261005T074603
+UID:1791207963072.CFLIB.ORG
 CLASS:PUBLIC
 DESCRIPTION:JOIN WEBEX WEBINAR https://hhs-ihs.webex.com/hhs-ihs/j.php?MTI
  D=mdf92bdba3dc94b56ede5fbbc37b23654 Webinar number (access code): 2818 276
